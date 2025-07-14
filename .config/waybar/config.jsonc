@@ -81,7 +81,7 @@
         "format": "  {}",
         "escape": true,
         "tooltip": false,
-        "exec": "python /home/krft/scripts/scroll.py --exec \"playerctl metadata --format='{{title}} - {{artist}}'\" --max-length 35 --exec-interval 1 --separator \" | \"",
+        "exec": "python /home/krft/scripts/scroll.py --exec \"playerctl metadata --format='{{title}} - {{artist}}'\" --max-length 35 --separator \"        \"",
         "on-click": "playerctl play-pause",
         "on-click-right": "playerctl stop",
         "on-scroll-down": "playerctl previous",

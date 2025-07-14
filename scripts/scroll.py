@@ -5,40 +5,39 @@ import subprocess
 def get_cmd_output(command):
     return subprocess.check_output(command, shell=True).decode().replace('\n', '')
 
+def get_scrolled_msg(string, separator, length, scroll_index):
+    message = (string + separator) * 2
+    scroll_index %= len(string + separator)
+    return message[scroll_index:scroll_index + length]
+
+
 @click.command()
 @click.option('--scroll-interval', default=1)
 @click.option('--exec', prompt='Command to get output from')
-@click.option('--exec-interval', default=3)
 @click.option('--max-length', default=30)
 @click.option('--separator', default=' ')
-def scroll(scroll_interval, exec, exec_interval, max_length, separator):
-    exec_interval_count = 0
-    cmd_output = get_cmd_output(exec)
-    message = (cmd_output + separator) * 2
-    if len(cmd_output) <= max_length:
-        output = cmd_output
-    else:
-        output = message[:max_length]
-    click.echo(output)
-    scroll_index = 1
-    while (True):
-        exec_interval_count += 1
+def scroll(scroll_interval, exec, max_length, separator):
+    scroll_index = 0
+    cmd_output = get_cmd_output(exec);
+    length = len(cmd_output)
+    scroll = len(cmd_output) > max_length
+    if scroll:
+        length = max_length
+    while True:
+        new_cmd_ouput = get_cmd_output(exec)
+        if cmd_output != new_cmd_ouput:
+            scroll_index = 0
+            cmd_output = new_cmd_ouput
+            length = len(cmd_output)
+            scroll = len(cmd_output) > max_length
+            if scroll:
+                length = max_length
+
+        message = get_scrolled_msg(cmd_output, separator, length, scroll_index)
+        if scroll:
+            scroll_index += 1
+        click.echo(message[:length])
         time.sleep(scroll_interval)
-        if exec_interval_count >= exec_interval:
-            cmd_output = get_cmd_output(exec)
-            new_message = (get_cmd_output(exec) + separator) * 2
-            exec_interval_count = 0
-            if new_message != message:
-                scroll_index = 0
-                message = new_message
-                output = message[:max_length]
-        click.echo(output)
-        scroll_index += 1
-        scroll_index = scroll_index % (len(message) // 2)
-        if len(cmd_output) <= max_length:
-            output = cmd_output
-        else:
-            output = message[scroll_index : scroll_index + max_length]
 
 if __name__ == "__main__":
     scroll()
