@@ -86,7 +86,7 @@
         "on-click-right": "playerctl stop",
         "on-scroll-down": "playerctl previous",
         "on-scroll-up": "playerctl next",
-        "max-length": 35
+        "max-length": 36
     },
     "mpd": {
         "format": "{stateIcon} {consumeIcon}{randomIcon}{repeatIcon}{singleIcon}{artist} - {album} - {title} ({elapsedTime:%M:%S}/{totalTime:%M:%S}) ⸨{songPosition}|{queueLength}⸩ {volume}% ",

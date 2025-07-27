@@ -156,7 +156,7 @@ vim.opt.splitbelow = true
 --  See `:help 'list'`
 --  and `:help 'listchars'`
 vim.opt.list = true
-vim.opt.listchars = { tab = '  »', trail = '·', nbsp = '␣' }
+vim.opt.listchars = { tab = '   ', trail = '·', nbsp = '␣' }
 
 -- Preview substitutions live, as you type!
 vim.opt.inccommand = 'split'
@@ -181,6 +181,7 @@ vim.keymap.set('n', '<Esc>', '<cmd>nohlsearch<CR>')
 
 -- Diagnostic keymaps
 vim.keymap.set('n', '<leader>q', vim.diagnostic.setloclist, { desc = 'Open diagnostic [Q]uickfix list' })
+vim.keymap.set('n', '<leader>d', vim.diagnostic.open_float, { desc = 'Open diagnostic message float' })
 
 -- Exit terminal mode in the builtin terminal with a shortcut that is a bit easier
 -- for people to discover. Otherwise, you normally need to press <C-\><C-n>, which
@@ -895,12 +896,15 @@ require('lazy').setup({
     config = function()
       ---@diagnostic disable-next-line: missing-fields
       require('tokyonight').setup {
-        transparent = true,
+        -- transparent = true,
         styles = {
           -- sidebars = 'dark',
           -- floats = 'dark',
           comments = { italic = false }, -- Disable italics in comments
         },
+        on_colors = function(colors)
+          colors.comment = '#a09da3'
+        end,
       }
 
       -- Load the colorscheme here.
@@ -908,6 +912,8 @@ require('lazy').setup({
       -- any other, such as 'tokyonight-storm', 'tokyonight-moon', or 'tokyonight-day'.
       vim.cmd.colorscheme 'tokyonight-night'
       vim.api.nvim_set_hl(0, 'CursorLine', { bg = 'none' })
+      vim.api.nvim_set_hl(0, 'LineNrAbove', { fg = '#b2b8cf' })
+      vim.api.nvim_set_hl(0, 'LineNrBelow', { fg = '#b2b8cf' })
     end,
   },
 
