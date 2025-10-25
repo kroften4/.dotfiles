@@ -23,8 +23,8 @@ set -g fish_greeting
 set -gx JAVA_HOME /opt/graalvm-jdk-21.0.7+8.1/
 set -gx MANPAGER "nvim +Man!"
 set -gx EDITOR "nvim"
+set -gx WOKWI_CLI_TOKEN wok_85sMFv6n6P1FZzYbncQIog98ZPP19YLF10758e44
 
 alias todo "nvim /home/krft/Desktop/todo.txt"
-alias config "python ~/Utilities/config.py"
+alias config "python ~/utilities/config.py"
 alias dotfiles='/usr/bin/git --git-dir=$HOME/.dotfiles/.git --work-tree=$HOME'
-

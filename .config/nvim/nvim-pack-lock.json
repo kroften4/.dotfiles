@@ -1,0 +1,27 @@
+{
+  "plugins": {
+    "actions-preview.nvim": [],
+    "blink.cmp": {
+      "version": "1.0.0 - 2.0.0"
+    },
+    "conform.nvim": [],
+    "fidget.nvim": [],
+    "markdown-preview.nvim": [],
+    "mason.nvim": [],
+    "mini.surround": [],
+    "neovim": [],
+    "nvim-lspconfig": {
+      "rev": "5bfcc89",
+      "src": "https://github.com/neovim/nvim-lspconfig",
+      "version": "2.4.0 - 2.5.0"
+    },
+    "nvim-treesitter": [],
+    "oil.nvim": [],
+    "plenary.nvim": [],
+    "telescope.nvim": [],
+    "tokyonight.nvim": [],
+    "typst-preview.nvim": [],
+    "vague.nvim": [],
+    "which-key.nvim": []
+  }
+}

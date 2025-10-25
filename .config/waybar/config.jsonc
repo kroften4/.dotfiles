@@ -17,6 +17,7 @@
         "custom/power",
         "idle_inhibitor",
         "clock",
+        "custom/timew",
         "custom/music",
     ],
     "modules-right": [
@@ -87,6 +88,11 @@
         "on-scroll-down": "playerctl previous",
         "on-scroll-up": "playerctl next",
         "max-length": 36
+    },
+    "custom/timew": {
+        "format": "󱑈 {}",
+        "exec": "/home/krft/scripts/get_timew_status.sh",
+        "interval": 5
     },
     "mpd": {
         "format": "{stateIcon} {consumeIcon}{randomIcon}{repeatIcon}{singleIcon}{artist} - {album} - {title} ({elapsedTime:%M:%S}/{totalTime:%M:%S}) ⸨{songPosition}|{queueLength}⸩ {volume}% ",
