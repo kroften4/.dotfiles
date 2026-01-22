@@ -1,27 +1,74 @@
 {
   "plugins": {
-    "actions-preview.nvim": [],
+    "actions-preview.nvim": {
+      "rev": "cb938c2",
+      "src": "https://github.com/aznhe21/actions-preview.nvim"
+    },
     "blink.cmp": {
+      "rev": "327fff9",
+      "src": "https://github.com/Saghen/blink.cmp",
       "version": "1.0.0 - 2.0.0"
     },
-    "conform.nvim": [],
-    "fidget.nvim": [],
-    "markdown-preview.nvim": [],
-    "mason.nvim": [],
-    "mini.surround": [],
-    "neovim": [],
+    "conform.nvim": {
+      "rev": "9fd3d5e",
+      "src": "https://github.com/stevearc/conform.nvim"
+    },
+    "fidget.nvim": {
+      "rev": "e32b672",
+      "src": "https://github.com/j-hui/fidget.nvim"
+    },
+    "markdown-preview.nvim": {
+      "rev": "a923f5f",
+      "src": "https://github.com/iamcco/markdown-preview.nvim"
+    },
+    "mason.nvim": {
+      "rev": "ad7146a",
+      "src": "https://github.com/mason-org/mason.nvim"
+    },
+    "mini.surround": {
+      "rev": "3c73e2a",
+      "src": "https://github.com/nvim-mini/mini.surround"
+    },
+    "neovim": {
+      "rev": "72a04c4",
+      "src": "https://github.com/rose-pine/neovim"
+    },
     "nvim-lspconfig": {
-      "rev": "5bfcc89",
+      "rev": "3db16ce",
       "src": "https://github.com/neovim/nvim-lspconfig",
       "version": "2.4.0 - 2.5.0"
     },
-    "nvim-treesitter": [],
-    "oil.nvim": [],
-    "plenary.nvim": [],
-    "telescope.nvim": [],
-    "tokyonight.nvim": [],
-    "typst-preview.nvim": [],
-    "vague.nvim": [],
-    "which-key.nvim": []
+    "nvim-treesitter": {
+      "rev": "42fc28ba",
+      "src": "https://github.com/nvim-treesitter/nvim-treesitter"
+    },
+    "oil.nvim": {
+      "rev": "7e1cd77",
+      "src": "https://github.com/stevearc/oil.nvim"
+    },
+    "plenary.nvim": {
+      "rev": "b9fd522",
+      "src": "https://github.com/nvim-lua/plenary.nvim"
+    },
+    "telescope.nvim": {
+      "rev": "b4da76b",
+      "src": "https://github.com/nvim-telescope/telescope.nvim"
+    },
+    "tokyonight.nvim": {
+      "rev": "2642dbb",
+      "src": "https://github.com/folke/tokyonight.nvim"
+    },
+    "typst-preview.nvim": {
+      "rev": "64469f8",
+      "src": "https://github.com/chomosuke/typst-preview.nvim"
+    },
+    "vague.nvim": {
+      "rev": "5689afd",
+      "src": "https://github.com/vague2k/vague.nvim"
+    },
+    "which-key.nvim": {
+      "rev": "3aab214",
+      "src": "https://github.com/folke/which-key.nvim"
+    }
   }
 }

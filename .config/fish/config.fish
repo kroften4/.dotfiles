@@ -18,13 +18,22 @@ if status is-interactive
     set fish_cursor_visual block
 end
 
+function reverse_history_search
+  history | fzf --no-sort | read -l command
+  if test $command
+    commandline -rb $command
+  end
+end
+
+function fish_user_key_bindings
+  bind -M default / reverse_history_search
+end
+
 set -g fish_greeting
 
-set -gx JAVA_HOME /opt/graalvm-jdk-21.0.7+8.1/
 set -gx MANPAGER "nvim +Man!"
 set -gx EDITOR "nvim"
-set -gx WOKWI_CLI_TOKEN wok_85sMFv6n6P1FZzYbncQIog98ZPP19YLF10758e44
 
-alias todo "nvim /home/krft/Desktop/todo.txt"
-alias config "python ~/utilities/config.py"
-alias dotfiles='/usr/bin/git --git-dir=$HOME/.dotfiles/.git --work-tree=$HOME'
+alias dotfiles='/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
+alias dotfiles-add='~/scripts/dotfiles-add.sh'
+alias zapret='sudo /opt/zapret/main_script.sh -nointeractive'

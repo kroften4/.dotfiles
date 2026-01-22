@@ -21,396 +21,233 @@
    ```
 */
 
+/* --- Global Styles --- */
 * {
-    font-family: 'JetBrainsMono NF', 'Font Awesome 6 Free', 'Font Awesome 6 Brands', 'Noto Sans Mono', monospace;
-    font-size: 13px;
-    transition-duration: .2s;
-    transition-property: border-color, border-radius;
+  font-family: "FiraCode Nerd Font", "JetBrainsMono NF", "Font Awesome 7 Free";
+  font-size: 13px;
+  min-height: 0;
+  padding-right: 0px;
+  padding-left: 0px;
+  padding-bottom: 0px;
 }
 
-window#waybar {
-    padding: 10px;
-    /* background-color: alpha(@surface0, 0.3); */
-    background-color: transparent;
-    color: @text;
-    transition-property: background-color;
+/* --- Waybar Container --- */
+#waybar {
+  background: transparent;
+  color: #c6d0f5;
+  margin: 0px;
+  font-weight: 500;
 }
 
-window#waybar > * {
-    margin: 3px 3px 1px 3px;
+/* --- Left Modules (Individual, Fully Rounded Blocks - With Horizontal Spacing & Simple Hover) --- */
+#workspaces,
+#language,
+#custom-uptime,
+#submap,
+#memory,
+#cpu {
+  background-color: #1a1b26;
+  padding: 0.3rem 0.7rem;
+  margin: 5px 2px; /* 5px top/bottom margin, 0px left/right (base for individual control) */
+  border-radius: 6px; /* These modules are always rounded */
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  min-width: 0;
+  border: none;
+  /* Transition for background-color and color only */
+  transition: background-color 0s ease-in-out, color 0s ease-in-out;
 }
 
-window#waybar.hidden {
-    opacity: 0.2;
+#workspaces {
+  padding: 2px;
+  margin-left: 7px; /* Margin from the far left edge */
+  margin-right: 2px; /* Spacing after the workspaces module */
 }
 
-/*
-window#waybar.empty {
-    background-color: transparent;
-}
-window#waybar.solo {
-    background-color: #FFFFFF;
-}
-*/
-
-window#waybar.termite {
-    background-color: #3F3F3F;
+#custom-uptime {
+  margin-right: 5px; /* Spacing after the uptime module */
 }
 
-window#waybar.chromium {
-    background-color: #000000;
-    /* border: none; */
-}
-
-button {
-    /* Use box-shadow instead of border so the text isn't offset */
-    /* box-shadow: inset 0 -3px transparent; */
-    /* Avoid rounded borders under each button name */
-    border: solid 2px;
-    border-radius: 5px;
-    margin: 2px;
-}
-
-/* https://github.com/Alexays/Waybar/wiki/FAQ#the-workspace-buttons-have-a-strange-hover-effect */
-button:hover {
-    background: inherit;
-    /* box-shadow: inset 0 -3px #ffffff; */
+/* Simple Hover effects for individual left modules - BRIGHTER COLOR */
+#custom-uptime:hover,
+#cpu:hover {
+  background-color: rgb(41, 42, 53); /* Brighter highlight */
 }
 
 #workspaces button {
-    margin: 0 2px;
-    padding: 3px 5px;
-    padding-right: 10px;
-    background-color: transparent;
-    color: @text;
-    border-color: @text;
-    border-radius: 5px;
-}
-
-#workspaces button:hover {
-    /* background-color: alpha(@blue, 0.2); */
-    border-radius: 10px;
+  color: #babbf1;
+  border-radius: 2px; /* Workspaces buttons are always rounded */
+  padding: 0.3rem 0.6rem;
+  background: transparent;
+  transition: all 0s ease-in-out;
+  border: none;
+  outline: none;
 }
 
 #workspaces button.active {
-    border-color: @blue;
-    color: @text;
-    border-radius: 10px;
+  color: #99d1db;
+  background-color: rgba(153, 209, 219, 0.15);
+  /* box-shadow: inset 0 0 0 2px rgba(153, 209, 219, 0.2); */
 }
 
-#workspaces button.active:hover {
-    border-color: @peach;
+#workspaces button:hover {
+  background: rgb(41, 42, 53); /* Reference bright hover color */
+  color: #c6d0f5;
 }
 
-#workspaces button.empty:not(.active) {
-    color: alpha(@lavender, 0.5);
-    border-color: alpha(@lavender, 0.5);
+/* --- Center Module (Individual, Fully Rounded Block - With Simple Hover) --- */
+#clock {
+  background-color: #1a1b26;
+  padding: 0.3rem 0.7rem;
+  margin: 5px 0px;
+  border-radius: 6px; /* This module is always rounded */
+  box-shadow: 0 1px 3px rgba(153, 209, 219, 0.2);
+  min-width: 0;
+  border: none;
+  transition: background-color 0s ease-in-out, color 0s ease-in-out;
 }
 
-/* #workspaces button.focused { */
-/*     background-color: #64727D; */
-/*     box-shadow: inset 0 -3px #ffffff; */
-/* } */
-
-#workspaces button.urgent {
-    border-color: @maroon;
-    color: @maroon;
+/* Simple Hover effect for clock module - BRIGHTER COLOR */
+#clock:hover {
+  background-color: rgba(153, 209, 219, 0.1); /* Brighter highlight */
 }
 
-#mode {
-    background-color: #64727D;
-    box-shadow: inset 0 -3px #ffffff;
+#custom-pomodoro {
+    background-color: #1a1b26; /* Consistent dark background */
+    padding: 0.3rem 0.7rem; /* Consistent padding with other modules (e.g., cpu, uptime) */
+    margin: 5px 0px; /* 5px top/bottom margin, 0px left/right (base for individual control) */
+    border-radius: 6px; /* Consistent rounded corners with other individual modules */
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1); /* Consistent shadow */
+    min-width: 0;
+    border: none;
+    outline: none; /* Ensure no default outline */
+    /* Transition for background-color, color, outline, and box-shadow for smooth effect */
+    transition: background-color 0s ease-in-out, color 0s ease-in-out, outline 0s ease-in-out, box-shadow 0s ease-in-out;
+    color: #babbf1; /* A calm color, consistent with custom-uptime */
+    font-weight: 600; /* Slightly bolder for the timer, consistent with clock */
 }
 
-#clock,
-#battery,
-#cpu,
-#memory,
-#disk,
-#temperature,
+/* Positioning and spacing for the custom-pomodoro module */
+#custom-pomodoro {
+    margin-left: 5px; /* Spacing from the previous module (e.g., clock) */
+    margin-right: 5px; /* Spacing before the seamless right bar starts (e.g., bluetooth) */
+}
+
+/* Hover effect for the new pomodoro module (consistent with others + rectangular outline) */
+#custom-pomodoro:hover {
+    background-color: rgb(41, 42, 53); /* Brighter highlight, consistent with other individual modules */
+    color: #c6d0f5; /* Text color change on hover, consistent with other individual modules */
+    outline: 1px solid rgba(255, 255, 255, 0.1); /* Rectangular outline on hover */
+    outline-offset: -1px;
+}
+
+/* --- Highlighted state for Pomodoro module when running (work or break) --- */
+#custom-pomodoro.work,
+#custom-pomodoro.break {
+  color: #99d1db; /* Text color consistent with active workspaces button */
+  background-color: rgba(153, 209, 219, 0.1); /* Background color consistent with active workspaces button */
+  box-shadow: inset 0 0 0 1px rgba(153, 209, 219, 0.2); /* Inner shadow for outline effect */
+  outline: none;
+}
+
+/* --- Right Modules (Single, Seamless Bar ) --- */
+#bluetooth,
+#pulseaudio,
 #backlight,
 #network,
-#pulseaudio,
-#wireplumber,
-#custom-media,
 #tray,
-#mode,
-#idle_inhibitor,
-#scratchpad,
 #power-profiles-daemon,
-#mpd,
-#custom-music,
-#custom-timew,
-#custom-swaync,
-#custom-power {
-    padding: 0 13px 0 10px;
-    margin: 3px 0px;
-    border-radius: 5px;
-    background-color: @surface0;
-    border: 2px solid transparent;
+#custom-lock,
+#battery {
+  background-color: #1a1b26;
+  padding: 0.3rem 0.7rem;
+  margin: 5px 0px; 
+  border-radius: 0;
+  box-shadow: none;
+  min-width: 0;
+  border: none;
+  transition: background-color 0s ease-in-out, color 0s ease-in-out;
 }
 
-#clock:hover,
-#battery:hover,
-#cpu:hover,
-#memory:hover,
-#disk:hover,
-#temperature:hover,
-#backlight:hover,
-#network:hover,
+#bluetooth:hover,
 #pulseaudio:hover,
-#wireplumber:hover,
-#custom-media:hover,
-#tray:hover,
-#mode:hover,
-#idle_inhibitor:hover,
-#scratchpad:hover,
+#backlight:hover,
 #power-profiles-daemon:hover,
-#mpd:hover,
-#custom-music:hover,
-#custom-swaync:hover,
-#custom-power:hover
-{
-    border: 2px solid @overlay2;
+#network:hover,
+#custom-lock:hover,
+#battery:hover {
+  background-color: rgb(41, 42, 53);
 }
 
-#window,
-#workspaces {
-    margin: 3px;
+#bluetooth {
+  margin-left: 0px; 
+  border-top-left-radius: 6px;
+  border-bottom-left-radius: 6px;
 }
 
-/* If workspaces is the leftmost module, omit left margin */
-.modules-left > widget:first-child > #workspaces {
-    margin-left: 0;
+#battery {
+  border-top-right-radius: 6px;
+  border-bottom-right-radius: 6px;
+  margin-right: 7px;
 }
 
-/* If workspaces is the rightmost module, omit right margin */
-.modules-right > widget:last-child > #workspaces {
-    margin-right: 0;
+#custom-uptime {
+  color: #babbf1;
 }
-
-#custom-power {
-    background-color: @text;
-    color: @crust;
+#cpu {
+  color: #c6d0f5;
 }
 
 #clock {
-}
-
-#battery.good:not(.charging) {
-    color: @green;
-}
-
-#battery.warning {
-    color: @yellow;
-}
-
-#battery.warning:not(.charging) {
-    border-color: @yellow;
-}
-
-#battery.critical {
-    color: @red;
-}
-
-@keyframes blink {
-    to {
-        /* color: transparent; */
-        border-color: transparent;
-    }
-}
-
-/* Using steps() instead of linear as a timing function to limit cpu usage */
-#battery.critical:not(.charging) {
-    color: @red;
-    border-color: @red;
-    animation-name: blink;
-    animation-duration: 1s;
-    animation-timing-function: steps(12);
-    animation-iteration-count: infinite;
-    animation-direction: alternate;
-}
-
-#power-profiles-daemon {
-    padding-right: 15px;
-}
-
-#power-profiles-daemon.performance {
-    color: @red;
-    padding-right: 12px;
-}
-
-#power-profiles-daemon.balanced {
-    color: @sapphire;
-    padding-left: 7px;
-}
-
-#power-profiles-daemon.power-saver {
-    color: @green;
-    padding-left: 8px;
-    padding-right: 14px;
-}
-
-label:focus {
-    background-color: #000000;
-}
-
-#cpu {
-    color: @green;
-}
-
-#memory {
-    color: @mauve;
-}
-
-#disk {
-    background-color: #964B00;
-}
-
-#backlight {
-    color: @teal;
-}
-
-#network {
-    color: @sapphire;
-}
-
-#network.disconnected {
-    color: @red;
-}
-
-#custom-timew {
-    color: @red;
+  color: #99d1db;
+  font-weight: 500;
 }
 
 #pulseaudio {
-    /* background-color: shade(@yellow, 0.8); */
-    color: @yellow;
+  color: #c6d0f5;
+}
+#backlight {
+  color: #c6d0f5;
 }
 
-#pulseaudio.muted {
-    color: @red;
+#network {
+  color: #c6d0f5;
 }
 
-#wireplumber {
-    background-color: #fff0f5;
-    color: #000000;
+#network.disconnected {
+  color: #e78284;
 }
 
-#wireplumber.muted {
-    background-color: #f53c3c;
+#custom-lock {
+  color: #babbf1;
+}
+#bluetooth {
+  color: #888888;
+  font-size: 14px;
+}
+#bluetooth.on {
+  color: #2196f3;
+}
+#bluetooth.connected {
+  color: #99d1db;
+}
+#battery {
+  color: #99d1db;;
+}
+#battery.charging {
+  color: #a6d189;
+}
+#battery.warning:not(.charging) {
+  color: #e78284;
 }
 
-#custom-media {
-    background-color: #66cc99;
-    color: #2a5c45;
-    min-width: 100px;
-}
-
-#custom-media.custom-spotify {
-    background-color: #66cc99;
-}
-
-#custom-media.custom-vlc {
-    background-color: #ffa000;
-}
-
-#temperature {
-    background-color: #f0932b;
-}
-
-#temperature.critical {
-    background-color: #eb4d4b;
-}
-
-#tray > .passive {
-    -gtk-icon-effect: dim;
-}
-
-#tray > .needs-attention {
-    -gtk-icon-effect: highlight;
-    background-color: #eb4d4b;
-}
-
-#idle_inhibitor {
-    padding-left: 7px;
-    padding-right: 14px;
-}
-
-#idle_inhibitor.activated {
-    padding-left: 7px;
-    padding-right: 13px;
-    background-color: @subtext0;
-    color: @crust;
-}
-
-#mpd {
-    background-color: #66cc99;
-    color: #2a5c45;
-}
-
-#mpd.disconnected {
-    background-color: #f53c3c;
-}
-
-#mpd.stopped {
-    background-color: #90b1b1;
-}
-
-#mpd.paused {
-    background-color: #51a37a;
-}
-
-#language, #submap {
-    border: 2px solid @blue;
-    border-radius: 5px;
-    color: @blue;
-    padding: 0 3px;
-    margin: 6px 0 4px 0;
-    font-size: 14px;
-}
-
-#keyboard-state {
-    background: #97e1ad;
-    color: #000000;
-    padding: 0 0px;
-    margin: 0 5px;
-    min-width: 16px;
-}
-
-#keyboard-state > label {
-    padding: 0 5px;
-}
-
-#keyboard-state > label.locked {
-    background: rgba(0, 0, 0, 0.2);
-}
-
-#scratchpad {
-    background: rgba(0, 0, 0, 0.2);
-}
-
-#scratchpad.empty {
-	background-color: transparent;
-}
-
-#privacy {
-    padding: 0;
-}
-
-#privacy-item {
-    padding: 0 5px;
-    color: white;
-}
-
-#privacy-item.screenshare {
-    background-color: #cf5700;
-}
-
-#privacy-item.audio-in {
-    background-color: #1ca000;
-}
-
-#privacy-item.audio-out {
-    background-color: #0069d4;
+/* --- Tooltip Styles --- */
+tooltip {
+  background-color: #1a1b26;
+  color: #dddddd;
+  padding: 5px 12px;
+  margin: 5px 0px;
+  border-radius: 6px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+  font-size: 12px;
 }

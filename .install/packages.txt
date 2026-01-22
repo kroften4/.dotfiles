@@ -1,0 +1,76 @@
+brightnessctl
+jq # cli json parser
+man-db # manual
+npm
+gdb
+unzip
+vim # currently using to edit root files
+yay-bin # package manager helper + AUR
+ffmpegthumbnailer # video thumbnails in file manager; i also set nemo to display thumbnails for files smaller than 10MB instead of 1
+git
+
+github-cli # store github credentials
+yt-dlp # website media downloader
+
+hypridle
+hyprlock
+hyprpolkitagent
+wl-clipboard
+swayosd # popups for audio/brightness ajustment, keyboard layout change, numpad toggle, etc.; different from notifications
+
+waybar
+power-profiles-daemon
+uwsm # launch .desktop entries
+
+# omarchy screenshotter
+grim
+slurp
+satty # edit the screenshot
+wayfreeze-git
+# omarchy tui install
+gum
+
+# minimal tui greeter
+# TODO: add auto install
+greetd
+greetd-tuigreet
+
+fish # vi mode, good completions, minimal configuration needed, but kinda annoying that it is not bash compatible
+fzf # fuzzy finder; using to fix fish vi mode search
+
+alacritty # vi select mode, no confirmation prompts on closing window and
+pasting text like in kitty
+firefox
+nemo # uses gtk theme unlike nautilus, and nautilus looks fine out of the box but i couldn't make it use dark theme, dolphin looks a bit more ugly (couldn't figure out how to theme qt correctly) + if you don't add some line in a dolphinrc or some shit it would display dark text on dark bg, also too many options on right click and when dragging files; can set per folder view remembering
+pinta # image editor; couldn't make it use dark theme and some icons are missing but overall the best i've found
+hiddify-next-bin # afair kinda the only vpn client that worked for me, have to run with sudo -EH and set VPN mode in settings
+obs-studio
+
+iptables-nft # for zapret (dpi bypass)
+
+walker-bin
+elephant-clipboard
+elephant-desktopapplications
+elephant-providerlist
+elephant-unicode # idk dont really use
+elephant-websearch # idk dont really use; need to configure different search
+engines prob
+
+bluetui # bluetooth manager
+impala # network manager
+iwd # impala dependency that it doesn't install for some reason
+btop # system monitor
+
+imv # minimal image viewer; good but unmaintained
+mpv # media player
+
+bob # nvim version manager, using for nightly v12 for native package manager; i remember i needed to do some shit to make it work
+
+ttf-firacode-nerd
+ttf-dejavu # display braille characters in TUI's correctly
+otf-font-awesome # additional icons for waybar
+
+discord
+telegram-desktop
+
+# TODO: how to deal with gtk & qt theming absolute horror

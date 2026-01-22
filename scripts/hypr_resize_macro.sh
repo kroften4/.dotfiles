@@ -14,9 +14,11 @@ WIDE_WINDOW_HEIGHT=330
 
 MC_WINDOW_CLASS_RE="^Minecraft.*$" # this will match e. g. `Minecraft* 1.16.1`
 
-# The state file which contains "1" if keybinds are enabled and "0" if not.
-# Managed by another script.
+# The state file which contains "mc" if keybinds are enabled and "default" if not.
+# Managed by another script. (this is kinda wonky tbh)
 STATE_FILE="/tmp/keyd_profile_state.txt"
+STATE_MC="mc"
+STATE_DEFAULT="default"
 
 # Exit codes
 EXIT_SUCCESS=0
@@ -66,7 +68,7 @@ macro_resize () {
 
 if [[ -f $STATE_FILE ]]; then
     state=$( cat $STATE_FILE )
-    if [[ "$state" == "0" ]]; then
+    if [[ "$state" == "$STATE_DEFAULT" ]]; then
         exit $EXIT_KEYBINDS_DISABLED
     fi
 else

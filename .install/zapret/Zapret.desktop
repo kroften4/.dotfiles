@@ -1,0 +1,9 @@
+[Desktop Entry]
+Version=1.0
+Name=Zapret
+Comment=Zapret
+Exec=\alacritty --class=TUI.tile -e bash -c 'sudo /opt/zapret/main_script.sh -nointeractive'
+Terminal=false
+Type=Application
+
+StartupNotify=true

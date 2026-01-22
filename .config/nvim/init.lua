@@ -1,11 +1,10 @@
 -- TODO:
 -- show lsp status on status bar
--- blink remove highlight after moved from snippet
--- ipynb support
--- what is https://github.com/nvim-treesitter/nvim-treesitter-textobjects
+-- undo tree
+-- maybe add a bind for removing autobreak (formatoptions -=tc)
 -- own lsp snippets (add header guards)
 -- jump between header and source file
--- undo tree
+-- what is https://github.com/nvim-treesitter/nvim-treesitter-textobjects
 
 -- OPTIONS --
 vim.opt.number = true
@@ -45,129 +44,138 @@ vim.keymap.set("n", "<C-q>", "<cmd>bdelete<CR>")
 -- copy to system clipboard
 vim.keymap.set({ "n", "v", "x" }, "<leader>y", '"+y')
 vim.keymap.set({ "n", "v", "x" }, "<leader>Y", '"+y$') -- "+Y does not work
--- vim.keymap.set({ 'n', 'v', 'x' }, '<leader>d', '"+d')
 
 vim.api.nvim_create_autocmd("TextYankPost", {
-	desc = "Highlight when yanking (copying) text",
-	group = vim.api.nvim_create_augroup("kickstart-highlight-yank", { clear = true }),
-	callback = function()
-		vim.highlight.on_yank()
-	end,
+    desc = "Highlight when yanking (copying) text",
+    group = vim.api.nvim_create_augroup("kickstart-highlight-yank", { clear = true }),
+    callback = function()
+        vim.highlight.on_yank()
+    end,
 })
 
 -- PLUGINS --
 vim.pack.add({
-	-- themes
-	{ src = "https://github.com/vague2k/vague.nvim" },
-	{ src = "https://github.com/folke/tokyonight.nvim" },
-	{ src = "https://github.com/rose-pine/neovim" },
+    -- themes
+    { src = "https://github.com/vague2k/vague.nvim" },
+    { src = "https://github.com/folke/tokyonight.nvim" },
+    { src = "https://github.com/rose-pine/neovim" },
 
-	{ src = "https://github.com/stevearc/oil.nvim" }, -- edit files with neovim
+    { src = "https://github.com/stevearc/oil.nvim" },             -- edit files with neovim
 
-	{ src = "https://github.com/nvim-lua/plenary.nvim" }, -- dependency
-	{ src = "https://github.com/nvim-telescope/telescope.nvim" }, -- fuzzy find
-	{ src = "https://github.com/aznhe21/actions-preview.nvim" }, -- preview code actions in telescope
+    { src = "https://github.com/nvim-lua/plenary.nvim" },         -- dependency
+    { src = "https://github.com/nvim-telescope/telescope.nvim" }, -- fuzzy find
+    { src = "https://github.com/aznhe21/actions-preview.nvim" },  -- preview code actions in telescope
 
-	-- previews
-	{ src = "https://github.com/chomosuke/typst-preview.nvim" },
-	{ src = "https://github.com/iamcco/markdown-preview.nvim" }, -- had to cd into plugin directory and run `npm install`
+    -- previews
+    { src = "https://github.com/chomosuke/typst-preview.nvim" },
+    { src = "https://github.com/iamcco/markdown-preview.nvim" }, -- had to cd into plugin directory and run `npm install`
 
-	{ src = "https://github.com/nvim-mini/mini.surround" },
+    { src = "https://github.com/nvim-mini/mini.surround" },
 
-	{ src = "https://github.com/folke/which-key.nvim" }, -- show pending keybinds
+    { src = "https://github.com/folke/which-key.nvim" }, -- show pending keybinds
 
-	{ src = "https://github.com/nvim-treesitter/nvim-treesitter" },
-	{ src = "https://github.com/mason-org/mason.nvim" }, -- auto install lsp
-	{ src = "https://github.com/neovim/nvim-lspconfig" , version = vim.version.range("2.4.*") }, -- auto config lsp
-	{ src = "https://github.com/j-hui/fidget.nvim" }, -- lsp status
-	{ src = "https://github.com/stevearc/conform.nvim" }, -- format
-	{ src = "https://github.com/Saghen/blink.cmp", version = vim.version.range("1.*") }, -- autocompletion
+    { src = "https://github.com/nvim-treesitter/nvim-treesitter" },
+    { src = "https://github.com/mason-org/mason.nvim" },                                                 -- auto install lsp
+    { src = "https://github.com/neovim/nvim-lspconfig",          version = vim.version.range("2.4.*") }, -- auto config lsp
+    { src = "https://github.com/j-hui/fidget.nvim" },                                                    -- lsp status
+    { src = "https://github.com/stevearc/conform.nvim" },                                                -- format
+    { src = "https://github.com/Saghen/blink.cmp",               version = vim.version.range("1.*") },   -- autocompletion
 })
 
-require("mason").setup()
+require("mason").setup({
+    -- put system's binaries first; this is for ESP-IDF's clangd
+    PATH = "append",
+})
 require("fidget").setup()
 require("telescope").setup()
 require("oil").setup({
-	view_options = {
-		show_hidden = true,
-	},
+    view_options = {
+        show_hidden = true,
+    },
 })
 require("conform").setup({
-	formatters_by_ft = {
-		lua = { "stylua" },
-		python = { "black" },
-		javascript = { "prettierd", "prettier", stop_after_first = true },
-		typst = { "prettypst" },
-	},
+    formatters_by_ft = {
+        lua = { "stylua" },
+        python = { "black" },
+        javascript = { "prettierd", "prettier", stop_after_first = true },
+        typst = { "prettypst" },
+    },
 })
 require("blink.cmp").setup({
-	keymap = {
-		["<C-space>"] = { "show", "show_documentation", "hide_documentation" },
-		["<C-e>"] = { "cancel", "fallback" },
-		["<C-y>"] = { "select_and_accept", "fallback" },
+    keymap = {
+        ["<C-space>"] = { "show", "show_documentation", "hide_documentation" },
+        ["<C-e>"] = { "cancel", "fallback" },
+        ["<C-y>"] = { "select_and_accept", "fallback" },
 
-		["<C-p>"] = { "select_prev", "fallback_to_mappings" },
-		["<C-n>"] = { "select_next", "fallback_to_mappings" },
+        ["<C-p>"] = { "select_prev", "fallback_to_mappings" },
+        ["<C-n>"] = { "select_next", "fallback_to_mappings" },
 
-		["<C-u>"] = { "scroll_documentation_up", "fallback" },
-		["<C-d>"] = { "scroll_documentation_down", "fallback" },
+        ["<C-u>"] = { "scroll_documentation_up", "fallback" },
+        ["<C-d>"] = { "scroll_documentation_down", "fallback" },
 
-		["<C-j>"] = { "snippet_forward" },
-		["<C-k>"] = { "snippet_backward" },
-	},
-	sources = { default = { "lsp", "path" } },
-	completion = { menu = { max_height = 25 } },
+        ["<C-j>"] = { "snippet_forward" },
+        ["<C-k>"] = { "snippet_backward" },
+    },
+    sources = { default = { "lsp", "path" } },
+    completion = { menu = { max_height = 25 } },
 })
 ---@diagnostic disable-next-line: missing-fields
 require("nvim-treesitter.configs").setup({
-	auto_install = true,
-	highlight = { enable = true },
+    auto_install = true,
+    highlight = { enable = true },
 })
 require("mini.surround").setup({
-	highlight_duration = 2000,
-	mappings = {
-		add = "<C-s>a", -- Add surrounding in Normal and Visual modes
-		delete = "<C-s>d", -- Delete surrounding
-		replace = "<C-s>r", -- Replace surrounding
-		find = "",
-		find_left = "",
-		highlight = "",
-		suffix_last = "",
-		suffix_next = "",
-	},
+    highlight_duration = 2000,
+    mappings = {
+        add = "<C-s>a",     -- Add surrounding in Normal and Visual modes
+        delete = "<C-s>d",  -- Delete surrounding
+        replace = "<C-s>r", -- Replace surrounding
+        find = "",
+        find_left = "",
+        highlight = "",
+        suffix_last = "",
+        suffix_next = "",
+    },
 })
 require("which-key").setup()
+require("vague").setup({
+    style = {
+        comments = "none",
+        strings = "none",
+    }
+})
 
 vim.lsp.enable({
-	"lua_ls",
-	"clangd",
-	"pyright",
-	"asm_lsp",
-	"jdtls",
-	"tinymist",
-	"hyprls",
-	"arduino_language_server",
-	"ts_ls",
+    "lua_ls",
+    "clangd",
+    "pyright",
+    "asm_lsp",
+    "jdtls",
+    "tinymist",
+    "hyprls",
+    "arduino_language_server",
+    "ts_ls",
     "rust_analyzer",
-    "docker_language_server"
+    "docker_language_server",
+    "dartls"
 })
 
 -- Limit width of LSP hover float
 local orig_util_open_floating_preview = vim.lsp.util.open_floating_preview
 ---@diagnostic disable-next-line: duplicate-set-field
 function vim.lsp.util.open_floating_preview(contents, syntax, opts, ...)
-	opts = opts or {}
-	opts.border = opts.border or "single"
-	opts.max_width = opts.max_width or 100
-	return orig_util_open_floating_preview(contents, syntax, opts, ...)
+    opts = opts or {}
+    opts.border = opts.border or "single"
+    opts.max_width = opts.max_width or 100
+    return orig_util_open_floating_preview(contents, syntax, opts, ...)
 end
 
 -- PLUGIN KEYMAPS --
 -- vim.keymap.set('n', '<leader>f', vim.lsp.buf.format)
 -- conform
 vim.keymap.set({ "n", "v" }, "<leader>f", function()
-	-- use configured formatter or fallback to lsp format
-	require("conform").format({ async = true, lsp_format = "fallback" })
+    -- use configured formatter or fallback to lsp format
+    require("conform").format({ async = true, lsp_format = "fallback" })
 end)
 -- oil
 vim.keymap.set("n", "<leader>e", "<cmd>Oil<CR>")
@@ -197,7 +205,7 @@ vim.keymap.set("n", "<leader>sr", ts.resume, { desc = "[S]earch [R]esume" })
 vim.keymap.set("n", "<leader>s.", ts.oldfiles, { desc = '[S]earch Recent Files ("." for repeat)' })
 vim.keymap.set("n", "<leader><leader>", ts.buffers, { desc = "[ ] Find existing buffers" })
 vim.keymap.set("n", "<leader>sn", function()
-	ts.find_files({ cwd = vim.fn.stdpath("config") })
+    ts.find_files({ cwd = vim.fn.stdpath("config") })
 end, { desc = "[S]earch [N]eovim files" })
 
 vim.cmd.colorscheme("vague")

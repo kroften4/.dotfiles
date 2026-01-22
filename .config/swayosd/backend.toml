@@ -1,0 +1,3 @@
+# in /etc/xdg/swayosd/
+[input]
+ignore_caps_lock_key = true
