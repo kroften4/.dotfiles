@@ -1,0 +1,53 @@
+// getreuer based
+
+default partial alphanumeric_keys
+xkb_symbols "basic" {
+    name[Group1] = "Programming";
+    include "us"
+    // base, S, A, A+S
+    include "level3(ralt_switch)" // set Alt_R for level 3
+
+    //AE = Numbers row
+
+    //AD = QWERTY row
+    key <AD01> { [ q, Q, grave, 0] };
+    key <AD02> { [ w, W, less, 1 ] };
+    key <AD03> { [ e, E, greater, 2 ] };
+    key <AD04> { [ r, R, minus, 3 ] };
+    key <AD05> { [ t, T, bar, NoSymbol ] };
+
+    key <AD06> { [ y, Y, asciicircum, NoSymbol ] };
+    key <AD07> { [ u, U, braceleft, NoSymbol ] };
+    key <AD08> { [ i, I, braceright, NoSymbol ] };
+    key <AD09> { [ o, O, dollar, NoSymbol ] };
+    key <AD10> { [ p, P, percent, NoSymbol ] }; // was tab
+    //key <AD11> { [ bracketleft, braceleft, BackSpace, NoSymbol ] };
+    //key <AD12> { [ bracketright, braceright, Delete, NoSymbol ] };
+
+    //AC = ASDF row
+    key <AC01> { [ a, A, exclam, NoSymbol ] };
+    key <AC02> { [ s, S, asterisk, 4 ] };
+    key <AC03> { [ d, D, slash, 5 ] };
+    key <AC04> { [ f, F, equal, 6 ] };
+    key <AC05> { [ g, G, ampersand, NoSymbol ] };
+                       
+    key <AC06> { [ h, H, numbersign, NoSymbol ] };
+    key <AC07> { [ j, J, parenleft, NoSymbol ] };
+    key <AC08> { [ k, K, parenright, NoSymbol ] };
+    key <AC09> { [ l, L, semicolon, NoSymbol ] };
+    key <AC10> { [ semicolon, colon, underscore, NoSymbol ] }; // was "
+    //key <AC11> { [ apostrophe, quotedbl, NoSymbol, NoSymbol ] };
+
+    //AB = ZXCV row
+    key <AB01> { [ z, Z, asciitilde, NoSymbol ] };
+    key <AB02> { [ x, X, plus, 7 ] };
+    key <AB03> { [ c, C, bracketleft, 8 ] };
+    key <AB04> { [ v, V, bracketright, 9 ] };
+    key <AB05> { [ b, B, quotedbl, NoSymbol ] }; // was %
+
+    key <AB06> { [ n, N, apostrophe, NoSymbol ] }; // was @
+    key <AB07> { [ m, M, colon, NoSymbol ] };
+    key <AB08> { [ comma, less, comma, NoSymbol ] };
+    key <AB09> { [ period, greater, period, NoSymbol ] };
+    key <AB10> { [ slash, question, backslash, NoSymbol ] }; // was '
+};

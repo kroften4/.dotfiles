@@ -3,8 +3,4 @@ xkb_symbols "basic" {
     name[Group1] = "Minecraft";
     include "us(basic)"
 
-    key <AE02> { [ 6, asciicircum ] }; // 2 -> 6
-    key <AE06> { [ 2, at ] }; // 6 -> 2
-    key <TAB> { [ p, P ] }; // tab -> p
-    key <AD10> { [ Tab, ISO_Left_Tab ] }; // p -> tab
 };

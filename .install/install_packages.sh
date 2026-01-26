@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-PACKAGE_FILE="${1:-packages.txt}"
+PACKAGE_FILE="${1:-packages.conf}"
 
 if [ ! -f "$PACKAGE_FILE" ]; then
     echo "Package file $PACKAGE_FILE not found"

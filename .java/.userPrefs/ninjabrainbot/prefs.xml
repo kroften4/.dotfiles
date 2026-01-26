@@ -26,8 +26,9 @@
   <entry key="stronghold_display_type" value="2"/>
   <entry key="theme" value="1"/>
   <entry key="translucent" value="false"/>
+  <entry key="use_adv_statistics" value="true"/>
   <entry key="use_precise_angle" value="true"/>
   <entry key="view" value="1"/>
-  <entry key="window_x" value="1428"/>
+  <entry key="window_x" value="-628"/>
   <entry key="window_y" value="5"/>
 </map>

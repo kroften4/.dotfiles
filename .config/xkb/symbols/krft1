@@ -19,8 +19,8 @@ xkb_symbols "basic" {
     key <AD08> { [ i, I, 8, Up ] };
     key <AD09> { [ o, O, 9, NoSymbol ] };
     key <AD10> { [ p, P, 0, NoSymbol ] };
-    key <AD11> { [ braceleft, bracketleft, at, NoSymbol ] };
-    key <AD12> { [ braceright, bracketright, BackSpace, Delete ] };
+    key <AD11> { [ bracketleft, braceleft, at, NoSymbol ] };
+    key <AD12> { [ bracketright, braceright, BackSpace, Delete ] };
 
     //AC = ASDF row
     key <AC01> { [ a, A, plus, NoSymbol ] };

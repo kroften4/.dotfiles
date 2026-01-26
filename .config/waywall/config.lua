@@ -9,7 +9,7 @@ return {
     pie_chart_3 = "#E446C4",
 
     ninbot_anchor = "topright", -- topleft, top, topright, left, right, bottomleft, bottomright
-    ninbot_opacity = 0.7,         -- 0 to 1
+    ninbot_opacity = 0.9,         -- 0 to 1
 
 
     -- ==== MIRRORS ====
