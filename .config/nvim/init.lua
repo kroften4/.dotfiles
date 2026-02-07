@@ -1,10 +1,10 @@
 -- TODO:
 -- show lsp status on status bar
+-- own lsp snippets (cpp header guards, bash shebang, sylvan's stuff)
 -- undo tree
--- maybe add a bind for removing autobreak (formatoptions -=tc)
--- own lsp snippets (add header guards)
+-- maybe add a bind for toggling autobreak (formatoptions -=tc), resolve it's
+--   annoyances in general
 -- jump between header and source file
--- what is https://github.com/nvim-treesitter/nvim-treesitter-textobjects
 
 -- OPTIONS --
 vim.opt.number = true
@@ -157,7 +157,8 @@ vim.lsp.enable({
     "ts_ls",
     "rust_analyzer",
     "docker_language_server",
-    "dartls"
+    "dartls",
+    "bashls"
 })
 
 -- Limit width of LSP hover float

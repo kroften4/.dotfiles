@@ -37,3 +37,5 @@ set -gx EDITOR "nvim"
 alias dotfiles='/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
 alias dotfiles-add='~/scripts/dotfiles-add.sh'
 alias zapret='sudo /opt/zapret/main_script.sh -nointeractive'
+
+alias cal='cal -m'
