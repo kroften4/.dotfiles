@@ -18,6 +18,9 @@ return {
         -- pie without shifting
         ["CAPSLOCK"] = "RIGHTSHIFT",
         ["RIGHTSHIFT"] = "CAPSLOCK", -- this one does not work
+
+        ["MB5"] = "HOME",
+
     },
 
     normal_kb = {

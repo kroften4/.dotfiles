@@ -98,6 +98,8 @@ require("conform").setup({
         lua = { "stylua" },
         python = { "black" },
         javascript = { "prettierd", "prettier", stop_after_first = true },
+        svelte = { "prettierd", "prettier", stop_after_first = true },
+        json = { "prettierd", "prettier", stop_after_first = true },
         typst = { "prettypst" },
     },
 })
@@ -158,7 +160,8 @@ vim.lsp.enable({
     "rust_analyzer",
     "docker_language_server",
     "dartls",
-    "bashls"
+    "bashls",
+    "svelte",
 })
 
 -- Limit width of LSP hover float
