@@ -19,7 +19,7 @@ if status is-interactive
 end
 
 function reverse_history_search
-  history | fzf --no-sort | read -l command
+  history | fzf --scheme=history | read -l command
   if test $command
     commandline -rb $command
   end

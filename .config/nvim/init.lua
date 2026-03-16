@@ -1,10 +1,18 @@
 -- TODO:
--- show lsp status on status bar
+-- vsc*de/emacs multicursor kinda mogs sometimes i have to know more
+--     search/highlight current word/object/selection (without telescope)
+--     %s with pre-placed selection
+--     tsoding's emacs is cool but i don't remember what exactly
+--     practical vim by drew neil has a lot of cool vim tips
+-- enhance status bar (lsp info, spellcheck, )
 -- own lsp snippets (cpp header guards, bash shebang, sylvan's stuff)
+-- custom code actions (switch include "" to <>) (is this even pos)
 -- undo tree
 -- maybe add a bind for toggling autobreak (formatoptions -=tc), resolve it's
---   annoyances in general
+--     annoyances in general
 -- jump between header and source file
+-- grd to source, grD to header do not work correctly if both header&source not
+--     open
 
 -- OPTIONS --
 vim.opt.number = true
@@ -20,7 +28,7 @@ vim.opt.colorcolumn = "81"
 vim.opt.textwidth = 80
 vim.opt.linebreak = true
 vim.opt.confirm = true
-vim.opt.scrolloff = 10
+vim.opt.scrolloff = 7
 vim.opt.timeout = false
 
 vim.opt.tabstop = 4
@@ -98,6 +106,7 @@ require("conform").setup({
         lua = { "stylua" },
         python = { "black" },
         javascript = { "prettierd", "prettier", stop_after_first = true },
+        typescript = { "prettierd", "prettier", stop_after_first = true },
         svelte = { "prettierd", "prettier", stop_after_first = true },
         json = { "prettierd", "prettier", stop_after_first = true },
         typst = { "prettypst" },
@@ -116,7 +125,7 @@ require("blink.cmp").setup({
         ["<C-d>"] = { "scroll_documentation_down", "fallback" },
 
         ["<C-j>"] = { "snippet_forward" },
-        ["<C-k>"] = { "snippet_backward" },
+        ["<C-k>"] = { "snippet_backward" }, -- messes with digraphs but i dont really use them
     },
     sources = { default = { "lsp", "path" } },
     completion = { menu = { max_height = 25 } },
@@ -141,10 +150,15 @@ require("mini.surround").setup({
 })
 require("which-key").setup()
 require("vague").setup({
-    style = {
-        comments = "none",
-        strings = "none",
-    }
+    italic = false,
+    on_highlights = function(hl, colors)
+        -- For available options see `:h nvim_set_hl()`
+        -- https://github.com/vague-theme/vague.nvim/blob/main/lua/vague/groups/common.lua
+        hl.SpellBad.sp = colors.constant
+        hl.SpellCap.sp = colors.constant
+        hl.SpellLocal.sp = colors.constant
+        hl.SpellRare.sp = colors.constant
+    end
 })
 
 vim.lsp.enable({
@@ -158,7 +172,8 @@ vim.lsp.enable({
     "arduino_language_server",
     "ts_ls",
     "rust_analyzer",
-    "docker_language_server",
+    -- "docker_language_server",
+    "dockerls",
     "dartls",
     "bashls",
     "svelte",

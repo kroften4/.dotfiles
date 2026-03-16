@@ -1,0 +1,121 @@
+// getreuer based
+//
+// TODO: 
+//   _ is on pinky
+//   \ is on pinky and \n is kinda awkward
+//   /> is on same finger
+//   -= is on same finger
+//   {: and {# for svelte is on same finger (so unlucky)
+
+default partial alphanumeric_keys
+xkb_symbols "us" {
+    name[Group1] = "Programming";
+    include "us"
+    // base, S, A, A+S
+    include "level3(ralt_switch)" // set Alt_R for level 3
+
+    //AE = Numbers row
+    key <AE01> { [ 1, exclam, Left, Left ] };
+    key <AE02> { [ 2, at, Down, Down ] };
+    key <AE03> { [ 3, numbersign, Up, Up ] };
+    key <AE04> { [ 4, dollar, Right, Right ] };
+    key <AE05> { [ 5, percent, KP_Home, KP_Home ] };
+    key <AE06> { [ 6, asciicircum, KP_End, KP_End ] };
+
+    //AD = QWERTY row
+    key <AD01> { [ q, Q, grave, 0] };
+    key <AD02> { [ w, W, less, 1 ] };
+    key <AD03> { [ e, E, greater, 2 ] };
+    key <AD04> { [ r, R, minus, 3 ] };
+    key <AD05> { [ t, T, bar, NoSymbol ] };
+
+    key <AD06> { [ y, Y, asciicircum, NoSymbol ] };
+    key <AD07> { [ u, U, braceleft, NoSymbol ] };
+    key <AD08> { [ i, I, braceright, NoSymbol ] };
+    key <AD09> { [ o, O, dollar, NoSymbol ] };
+    key <AD10> { [ p, P, percent, NoSymbol ] }; // was tab
+    //key <AD11> { [ bracketleft, braceleft, BackSpace, NoSymbol ] };
+    //key <AD12> { [ bracketright, braceright, Delete, NoSymbol ] };
+
+    //AC = ASDF row
+    key <AC01> { [ a, A, exclam, NoSymbol ] };
+    key <AC02> { [ s, S, asterisk, 4 ] };
+    key <AC03> { [ d, D, slash, 5 ] };
+    key <AC04> { [ f, F, equal, 6 ] };
+    key <AC05> { [ g, G, ampersand, NoSymbol ] };
+                       
+    key <AC06> { [ h, H, numbersign, NoSymbol ] };
+    key <AC07> { [ j, J, parenleft, NoSymbol ] };
+    key <AC08> { [ k, K, parenright, NoSymbol ] };
+    key <AC09> { [ l, L, semicolon, NoSymbol ] };
+    key <AC10> { [ semicolon, colon, underscore, NoSymbol ] }; // was "
+    //key <AC11> { [ apostrophe, quotedbl, NoSymbol, NoSymbol ] };
+
+    //AB = ZXCV row
+    key <AB01> { [ z, Z, asciitilde, NoSymbol ] };
+    key <AB02> { [ x, X, plus, 7 ] };
+    key <AB03> { [ c, C, bracketleft, 8 ] };
+    key <AB04> { [ v, V, bracketright, 9 ] };
+    key <AB05> { [ b, B, quotedbl, NoSymbol ] }; // was %
+
+    key <AB06> { [ n, N, apostrophe, NoSymbol ] }; // was @
+    key <AB07> { [ m, M, colon, NoSymbol ] };
+    key <AB08> { [ comma, less, comma, NoSymbol ] };
+    key <AB09> { [ period, greater, period, NoSymbol ] };
+    key <AB10> { [ slash, question, backslash, NoSymbol ] }; // was '
+};
+
+
+default partial alphanumeric_keys
+xkb_symbols "ru" {
+    name[Group1] = "Programming";
+    include "ru"
+    // base, S, A, A+S
+    include "level3(ralt_switch)" // set Alt_R for level 3
+    //AE 12345
+    key <AE01> { [ 1, exclam, Left, Left ] };
+    key <AE02> { [ 2, at, Down, Down ] };
+    //key <AE03> { [ 3, numerosign, Up, Up ] };
+    key <AE04> { [ 4, dollar, Right, Right ] };
+    key <AE05> { [ 5, percent, KP_Home, KP_Home ] };
+    key <AE06> { [ 6, asciicircum, KP_End, KP_End ] };
+
+    //AD QWERTY
+    key <AD01> { [ Cyrillic_shorti, Cyrillic_SHORTI, grave, 0 ] };
+    key <AD02> { [ Cyrillic_tse,    Cyrillic_TSE,    less,  1 ] };
+    key <AD03> { [ Cyrillic_u,      Cyrillic_U,      greater, 2 ] };
+    key <AD04> { [ Cyrillic_ka,     Cyrillic_KA,     minus, 3 ] };
+    key <AD05> { [ Cyrillic_ie,     Cyrillic_IE,     bar, NoSymbol ] };
+
+    key <AD06> { [ Cyrillic_en,     Cyrillic_EN,     asciicircum, NoSymbol ] };
+    key <AD07> { [ Cyrillic_ghe,    Cyrillic_GHE,    braceleft, NoSymbol ] };
+    key <AD08> { [ Cyrillic_sha,    Cyrillic_SHA,    braceright, NoSymbol ] };
+    key <AD09> { [ Cyrillic_shcha,  Cyrillic_SHCHA,  dollar, NoSymbol ] };
+    key <AD10> { [ Cyrillic_ze,     Cyrillic_ZE,     percent, NoSymbol ] };
+
+    //AC ASDF
+    key <AC01> { [ Cyrillic_ef,     Cyrillic_EF,     exclam, NoSymbol ] };
+    key <AC02> { [ Cyrillic_yeru,   Cyrillic_YERU,   asterisk, 4 ] };
+    key <AC03> { [ Cyrillic_ve,     Cyrillic_VE,     slash, 5 ] };
+    key <AC04> { [ Cyrillic_a,      Cyrillic_A,      equal, 6 ] };
+    key <AC05> { [ Cyrillic_pe,     Cyrillic_PE,     ampersand, NoSymbol ] };
+
+    key <AC06> { [ Cyrillic_er,     Cyrillic_ER,     numbersign, NoSymbol ] };
+    key <AC07> { [ Cyrillic_o,      Cyrillic_O,      parenleft, NoSymbol ] };
+    key <AC08> { [ Cyrillic_el,     Cyrillic_EL,     parenright, NoSymbol ] };
+    key <AC09> { [ Cyrillic_de,     Cyrillic_DE,     semicolon, NoSymbol ] };
+    key <AC10> { [ Cyrillic_zhe,    Cyrillic_ZHE,    underscore, NoSymbol ] };
+
+    //AB ZXCVB
+    key <AB01> { [ Cyrillic_ya,     Cyrillic_YA,     asciitilde, NoSymbol ] };
+    key <AB02> { [ Cyrillic_che,    Cyrillic_CHE,    plus, 7 ] };
+    key <AB03> { [ Cyrillic_es,     Cyrillic_ES,     bracketleft, 8 ] };
+    key <AB04> { [ Cyrillic_em,     Cyrillic_EM,     bracketright, 9 ] };
+    key <AB05> { [ Cyrillic_i,      Cyrillic_I,      quotedbl, NoSymbol ] };
+
+    key <AB06> { [ Cyrillic_te,     Cyrillic_TE,     apostrophe, NoSymbol ] };
+    key <AB07> { [ Cyrillic_softsign, Cyrillic_SOFTSIGN, colon, NoSymbol ] };
+    key <AB08> { [ Cyrillic_be,     Cyrillic_BE,     comma, NoSymbol ] };
+    key <AB09> { [ Cyrillic_yu,     Cyrillic_YU,     period, NoSymbol ] };
+    key <AB10> { [ period,           comma,        backslash, NoSymbol ] };
+};
